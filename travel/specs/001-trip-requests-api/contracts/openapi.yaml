@@ -1,0 +1,325 @@
+openapi: 3.1.0
+info:
+  title: Trip Requests API
+  version: 1.0.0
+  description: REST API for simplified institutional trip request management and national holiday validation.
+servers:
+  - url: http://localhost:3000
+paths:
+  /trip-requests:
+    post:
+      summary: Create a trip request
+      operationId: createTripRequest
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateTripRequestInput'
+            example:
+              requesterName: Maria Silva
+              origin: Parnaiba
+              destination: Teresina
+              departureAt: '2026-06-24T10:00:00.000Z'
+              returnAt: '2026-06-24T18:00:00.000Z'
+              purpose: Participation in an institutional meeting
+              passengerCount: 3
+      responses:
+        '201':
+          description: Trip request created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TripRequestResponse'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '409':
+          $ref: '#/components/responses/HolidayTripNotAllowed'
+        '502':
+          $ref: '#/components/responses/HolidaysApiUnavailable'
+    get:
+      summary: List trip requests
+      operationId: listTripRequests
+      responses:
+        '200':
+          description: Trip requests returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TripRequestListResponse'
+  /trip-requests/{id}:
+    get:
+      summary: Get a trip request by ID
+      operationId: getTripRequestById
+      parameters:
+        - $ref: '#/components/parameters/TripRequestId'
+      responses:
+        '200':
+          description: Trip request returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TripRequestResponse'
+        '404':
+          $ref: '#/components/responses/TripRequestNotFound'
+  /trip-requests/{id}/cancel:
+    patch:
+      summary: Cancel a trip request
+      operationId: cancelTripRequest
+      parameters:
+        - $ref: '#/components/parameters/TripRequestId'
+      responses:
+        '200':
+          description: Trip request canceled
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TripRequestResponse'
+        '404':
+          $ref: '#/components/responses/TripRequestNotFound'
+        '409':
+          $ref: '#/components/responses/TripRequestAlreadyCanceled'
+  /holidays/{year}:
+    get:
+      summary: List national holidays by year
+      operationId: listHolidaysByYear
+      parameters:
+        - name: year
+          in: path
+          required: true
+          schema:
+            type: integer
+            minimum: 1900
+            maximum: 9999
+      responses:
+        '200':
+          description: Holidays returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HolidayListResponse'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '502':
+          $ref: '#/components/responses/HolidaysApiUnavailable'
+components:
+  parameters:
+    TripRequestId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  schemas:
+    CreateTripRequestInput:
+      type: object
+      required:
+        - requesterName
+        - origin
+        - destination
+        - departureAt
+        - returnAt
+        - purpose
+        - passengerCount
+      properties:
+        requesterName:
+          type: string
+          minLength: 1
+        origin:
+          type: string
+          minLength: 1
+        destination:
+          type: string
+          minLength: 1
+        departureAt:
+          type: string
+          format: date-time
+        returnAt:
+          type: string
+          format: date-time
+        purpose:
+          type: string
+          minLength: 1
+        passengerCount:
+          type: integer
+          minimum: 1
+      additionalProperties: false
+    TripRequest:
+      type: object
+      required:
+        - id
+        - requesterName
+        - origin
+        - destination
+        - departureAt
+        - returnAt
+        - purpose
+        - passengerCount
+        - status
+        - createdAt
+      properties:
+        id:
+          type: string
+        requesterName:
+          type: string
+        origin:
+          type: string
+        destination:
+          type: string
+        departureAt:
+          type: string
+          format: date-time
+          examples:
+            - '2026-06-24T10:00:00.000Z'
+        returnAt:
+          type: string
+          format: date-time
+          examples:
+            - '2026-06-24T18:00:00.000Z'
+        purpose:
+          type: string
+        passengerCount:
+          type: integer
+        status:
+          type: string
+          enum:
+            - pending
+            - canceled
+        createdAt:
+          type: string
+          format: date-time
+          examples:
+            - '2026-06-20T14:30:00.000Z'
+    Holiday:
+      type: object
+      required:
+        - date
+        - name
+        - type
+      properties:
+        date:
+          type: string
+          format: date
+          examples:
+            - '2026-01-01'
+        name:
+          type: string
+          examples:
+            - Universal Fraternization Day
+        type:
+          type: string
+          examples:
+            - national
+    TripRequestResponse:
+      type: object
+      required:
+        - success
+        - data
+      properties:
+        success:
+          type: boolean
+          const: true
+        data:
+          $ref: '#/components/schemas/TripRequest'
+    TripRequestListResponse:
+      type: object
+      required:
+        - success
+        - data
+      properties:
+        success:
+          type: boolean
+          const: true
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TripRequest'
+    HolidayListResponse:
+      type: object
+      required:
+        - success
+        - data
+      properties:
+        success:
+          type: boolean
+          const: true
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Holiday'
+    ErrorResponse:
+      type: object
+      required:
+        - success
+        - error
+      properties:
+        success:
+          type: boolean
+          const: false
+        error:
+          type: object
+          required:
+            - code
+            - message
+          properties:
+            code:
+              type: string
+              pattern: '^[A-Z][A-Z0-9_]*$'
+            message:
+              type: string
+  responses:
+    ValidationError:
+      description: Request validation failed
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            success: false
+            error:
+              code: VALIDATION_ERROR
+              message: passengerCount must be greater than zero.
+    TripRequestNotFound:
+      description: Trip request was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            success: false
+            error:
+              code: TRIP_REQUEST_NOT_FOUND
+              message: Trip request was not found.
+    TripRequestAlreadyCanceled:
+      description: Trip request is already canceled
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            success: false
+            error:
+              code: TRIP_REQUEST_ALREADY_CANCELED
+              message: Trip request is already canceled.
+    HolidayTripNotAllowed:
+      description: Departure date is a national holiday
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            success: false
+            error:
+              code: HOLIDAY_TRIP_NOT_ALLOWED
+              message: Trip requests cannot start on a national holiday.
+    HolidaysApiUnavailable:
+      description: Holidays API is unavailable
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            success: false
+            error:
+              code: HOLIDAYS_API_UNAVAILABLE
+              message: Holidays API is unavailable.
