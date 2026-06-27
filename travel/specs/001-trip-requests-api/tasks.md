@@ -18,13 +18,13 @@
 
 **Purpose**: Initialize the TypeScript/Node.js backend project, package scripts, Docker database, and required delivery files.
 
-- [ ] T001 Create package manifest with `dev`, `start`, `test`, and `init:db` scripts in package.json
-- [ ] T002 Configure strict TypeScript with `strict: true`, Node.js 20 module resolution, and build output in tsconfig.json
-- [ ] T003 [P] Create functional environment example with `NODE_ENV`, `PORT`, `DATABASE_URL`, and `HOLIDAYS_API_BASE_URL` in .env.example
-- [ ] T004 [P] Create Docker Compose PostgreSQL service compatible with `DATABASE_URL` in docker-compose.yml
-- [ ] T005 [P] Create repository ignore rules for `node_modules`, `.env`, build output, and coverage in .gitignore
-- [ ] T006 [P] Create project directory skeleton for source and tests in src/ and tests/
-- [ ] T007 [P] Add initial README structure with team, setup, scripts, database, tests, and endpoints sections in README.md
+- [x] T001 Create package manifest with `dev`, `start`, `test`, and `init:db` scripts in package.json
+- [x] T002 Configure strict TypeScript with `strict: true`, Node.js 20 module resolution, and build output in tsconfig.json
+- [x] T003 [P] Create functional environment example with `NODE_ENV`, `PORT`, `DATABASE_URL`, and `HOLIDAYS_API_BASE_URL` in .env.example
+- [x] T004 [P] Create Docker Compose PostgreSQL service compatible with `DATABASE_URL` in docker-compose.yml
+- [x] T005 [P] Create repository ignore rules for `node_modules`, `.env`, build output, and coverage in .gitignore
+- [x] T006 [P] Create project directory skeleton for source and tests in src/ and tests/
+- [x] T007 [P] Add initial README structure with team, setup, scripts, database, tests, and endpoints sections in README.md
 
 ---
 
