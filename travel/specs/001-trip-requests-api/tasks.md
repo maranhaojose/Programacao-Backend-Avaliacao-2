@@ -34,21 +34,21 @@
 
 **Critical**: No user story work can begin until this phase is complete.
 
-- [ ] T008 Configure environment loading and validation in src/config/env.ts
-- [ ] T009 Configure PostgreSQL connection pool using `DATABASE_URL` in src/db/pool.ts
-- [ ] T010 Create idempotent database initializer with trip request schema and 10 seed records in src/db/init-db.ts
-- [ ] T011 [P] Define application error codes and HTTP status mapping in src/errors/error-codes.ts
-- [ ] T012 [P] Implement AppError class with UPPER_SNAKE_CASE code support in src/errors/app-error.ts
-- [ ] T013 [P] Implement fixed success response helper `{ success: true, data }` in src/middleware/response.ts
-- [ ] T014 Implement centralized error middleware with `{ success: false, error: { code, message } }` in src/middleware/error-handler.ts
-- [ ] T015 [P] Implement UTC ISO 8601 parsing and normalization helpers in src/utils/date-time.ts
-- [ ] T016 [P] Define TripRequest, input DTO, status, and repository row types in src/trip-requests/trip-requests.types.ts
-- [ ] T017 [P] Define Holiday and holiday client response types in src/holidays/holidays.types.ts
-- [ ] T018 Create Express app wiring JSON parsing, response helpers, routes, and error middleware in src/app.ts
-- [ ] T019 Create Node.js server bootstrap using configured `PORT` in src/server.ts
-- [ ] T020 [P] Create Vitest configuration for TypeScript tests in vitest.config.ts
-- [ ] T021 [P] Create shared BrasilAPI test stub utilities in tests/support/brasilapi.stub.ts
-- [ ] T022 [P] Create shared database test helpers for setup and cleanup in tests/support/db.ts
+- [x] T008 Configure environment loading and validation in src/config/env.ts
+- [x] T009 Configure PostgreSQL connection pool using `DATABASE_URL` in src/db/pool.ts
+- [x] T010 Create idempotent database initializer with trip request schema and 10 seed records in src/db/init-db.ts
+- [x] T011 [P] Define application error codes and HTTP status mapping in src/errors/error-codes.ts
+- [x] T012 [P] Implement AppError class with UPPER_SNAKE_CASE code support in src/errors/app-error.ts
+- [x] T013 [P] Implement fixed success response helper `{ success: true, data }` in src/middleware/response.ts
+- [x] T014 Implement centralized error middleware with `{ success: false, error: { code, message } }` in src/middleware/error-handler.ts
+- [x] T015 [P] Implement UTC ISO 8601 parsing and normalization helpers in src/utils/date-time.ts
+- [x] T016 [P] Define TripRequest, input DTO, status, and repository row types in src/trip-requests/trip-requests.types.ts
+- [x] T017 [P] Define Holiday and holiday client response types in src/holidays/holidays.types.ts
+- [x] T018 Create Express app wiring JSON parsing, response helpers, routes, and error middleware in src/app.ts
+- [x] T019 Create Node.js server bootstrap using configured `PORT` in src/server.ts
+- [x] T020 [P] Create Vitest configuration for TypeScript tests in vitest.config.ts
+- [x] T021 [P] Create shared BrasilAPI test stub utilities in tests/support/brasilapi.stub.ts
+- [x] T022 [P] Create shared database test helpers for setup and cleanup in tests/support/db.ts
 
 **Checkpoint**: Foundation ready. User story implementation can now begin in parallel.
 
