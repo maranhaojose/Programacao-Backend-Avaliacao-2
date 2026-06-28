@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 export const ERROR_CODES = {
   VALIDATION_ERROR: "VALIDATION_ERROR",
   TRIP_REQUEST_NOT_FOUND: "TRIP_REQUEST_NOT_FOUND",
@@ -25,4 +26,24 @@ export const ERROR_MESSAGES: Record<ErrorCode, string> = {
   [ERROR_CODES.HOLIDAY_TRIP_NOT_ALLOWED]: "Trip requests cannot start on a national holiday.",
   [ERROR_CODES.HOLIDAYS_API_UNAVAILABLE]: "Holidays API is unavailable.",
   [ERROR_CODES.INTERNAL_SERVER_ERROR]: "Internal server error.",
+=======
+export const ErrorCodes = {
+  VALIDATION_ERROR: 'VALIDATION_ERROR',
+  TRIP_REQUEST_NOT_FOUND: 'TRIP_REQUEST_NOT_FOUND',
+  TRIP_REQUEST_ALREADY_CANCELED: 'TRIP_REQUEST_ALREADY_CANCELED',
+  HOLIDAY_TRIP_NOT_ALLOWED: 'HOLIDAY_TRIP_NOT_ALLOWED',
+  HOLIDAYS_API_UNAVAILABLE: 'HOLIDAYS_API_UNAVAILABLE',
+  INTERNAL_SERVER_ERROR: 'INTERNAL_SERVER_ERROR',
+} as const;
+
+export type ErrorCode = (typeof ErrorCodes)[keyof typeof ErrorCodes];
+
+export const HTTP_STATUS_BY_ERROR_CODE: Record<ErrorCode, number> = {
+  [ErrorCodes.VALIDATION_ERROR]: 400,
+  [ErrorCodes.TRIP_REQUEST_NOT_FOUND]: 404,
+  [ErrorCodes.TRIP_REQUEST_ALREADY_CANCELED]: 409,
+  [ErrorCodes.HOLIDAY_TRIP_NOT_ALLOWED]: 409,
+  [ErrorCodes.HOLIDAYS_API_UNAVAILABLE]: 502,
+  [ErrorCodes.INTERNAL_SERVER_ERROR]: 500,
+>>>>>>> f6b3d79 (feat(api): implement foundational setup, core trip features, and finalize documentation (T008-T064))
 };

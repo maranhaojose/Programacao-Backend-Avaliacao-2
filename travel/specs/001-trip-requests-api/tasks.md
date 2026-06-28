@@ -62,21 +62,21 @@
 
 ### Tests for User Story 1
 
-- [ ] T023 [P] [US1] Add unit tests for date normalization and invalid date handling in tests/unit/date-time.test.ts
-- [ ] T024 [P] [US1] Add unit tests for BrasilAPI success, normalization, and upstream failure behavior in tests/unit/holidays.service.test.ts
-- [ ] T025 [P] [US1] Add unit tests for create validation rules and holiday blocking in tests/unit/trip-requests.service.test.ts
-- [ ] T026 [P] [US1] Add integration tests for `POST /trip-requests` success and validation failures in tests/integration/trip-requests.routes.test.ts
-- [ ] T027 [P] [US1] Add integration tests for holiday conflict and unavailable holiday API on creation in tests/integration/trip-requests.routes.test.ts
+- [x] T023 [P] [US1] Add unit tests for date normalization and invalid date handling in tests/unit/date-time.test.ts
+- [x] T024 [P] [US1] Add unit tests for BrasilAPI success, normalization, and upstream failure behavior in tests/unit/holidays.service.test.ts
+- [x] T025 [P] [US1] Add unit tests for create validation rules and holiday blocking in tests/unit/trip-requests.service.test.ts
+- [x] T026 [P] [US1] Add integration tests for `POST /trip-requests` success and validation failures in tests/integration/trip-requests.routes.test.ts
+- [x] T027 [P] [US1] Add integration tests for holiday conflict and unavailable holiday API on creation in tests/integration/trip-requests.routes.test.ts
 
 ### Implementation for User Story 1
 
-- [ ] T028 [P] [US1] Implement BrasilAPI holidays client using `GET {HOLIDAYS_API_BASE_URL}/api/feriados/v1/{year}` in src/holidays/holidays.client.ts
-- [ ] T029 [US1] Implement holidays service for list-by-year, date matching, and `HOLIDAYS_API_UNAVAILABLE` mapping in src/holidays/holidays.service.ts
-- [ ] T030 [P] [US1] Implement trip request repository create and row mapping functions in src/trip-requests/trip-requests.repository.ts
-- [ ] T031 [US1] Implement trip request creation service with required field, passenger count, date range, UTC normalization, holiday validation, and `pending` status in src/trip-requests/trip-requests.service.ts
-- [ ] T032 [US1] Implement create trip request controller action in src/trip-requests/trip-requests.controller.ts
-- [ ] T033 [US1] Register `POST /trip-requests` route in src/trip-requests/trip-requests.routes.ts
-- [ ] T034 [US1] Mount trip request routes in src/app.ts
+- [x] T028 [P] [US1] Implement BrasilAPI holidays client using `GET {HOLIDAYS_API_BASE_URL}/api/feriados/v1/{year}` in src/holidays/holidays.client.ts
+- [x] T029 [US1] Implement holidays service for list-by-year, date matching, and `HOLIDAYS_API_UNAVAILABLE` mapping in src/holidays/holidays.service.ts
+- [x] T030 [P] [US1] Implement trip request repository create and row mapping functions in src/trip-requests/trip-requests.repository.ts
+- [x] T031 [US1] Implement trip request creation service with required field, passenger count, date range, UTC normalization, holiday validation, and `pending` status in src/trip-requests/trip-requests.service.ts
+- [x] T032 [US1] Implement create trip request controller action in src/trip-requests/trip-requests.controller.ts
+- [x] T033 [US1] Register `POST /trip-requests` route in src/trip-requests/trip-requests.routes.ts
+- [x] T034 [US1] Mount trip request routes in src/app.ts
 
 **Checkpoint**: User Story 1 is fully functional and testable as the MVP.
 
@@ -90,14 +90,14 @@
 
 ### Tests for User Story 2
 
-- [ ] T035 [P] [US2] Add integration tests for `GET /trip-requests` returning seeded records and an empty list in tests/integration/trip-requests.routes.test.ts
+- [x] T035 [P] [US2] Add integration tests for `GET /trip-requests` returning seeded records and an empty list in tests/integration/trip-requests.routes.test.ts
 
 ### Implementation for User Story 2
 
-- [ ] T036 [US2] Implement repository list and row mapping for trip requests in src/trip-requests/trip-requests.repository.ts
-- [ ] T037 [US2] Implement list trip requests service method in src/trip-requests/trip-requests.service.ts
-- [ ] T038 [US2] Implement list trip requests controller action in src/trip-requests/trip-requests.controller.ts
-- [ ] T039 [US2] Register `GET /trip-requests` route in src/trip-requests/trip-requests.routes.ts
+- [x] T036 [US2] Implement repository list and row mapping for trip requests in src/trip-requests/trip-requests.repository.ts
+- [x] T037 [US2] Implement list trip requests service method in src/trip-requests/trip-requests.service.ts
+- [x] T038 [US2] Implement list trip requests controller action in src/trip-requests/trip-requests.controller.ts
+- [x] T039 [US2] Register `GET /trip-requests` route in src/trip-requests/trip-requests.routes.ts
 
 **Checkpoint**: User Story 2 works independently after foundation and can be validated with seeded data.
 
@@ -111,14 +111,14 @@
 
 ### Tests for User Story 3
 
-- [ ] T040 [P] [US3] Add integration tests for `GET /trip-requests/{id}` success and `TRIP_REQUEST_NOT_FOUND` in tests/integration/trip-requests.routes.test.ts
+- [x] T040 [P] [US3] Add integration tests for `GET /trip-requests/{id}` success and `TRIP_REQUEST_NOT_FOUND` in tests/integration/trip-requests.routes.test.ts
 
 ### Implementation for User Story 3
 
-- [ ] T041 [US3] Implement repository find-by-id function in src/trip-requests/trip-requests.repository.ts
-- [ ] T042 [US3] Implement get-by-id service method with `TRIP_REQUEST_NOT_FOUND` mapping in src/trip-requests/trip-requests.service.ts
-- [ ] T043 [US3] Implement get-by-id controller action in src/trip-requests/trip-requests.controller.ts
-- [ ] T044 [US3] Register `GET /trip-requests/:id` route in src/trip-requests/trip-requests.routes.ts
+- [x] T041 [US3] Implement repository find-by-id function in src/trip-requests/trip-requests.repository.ts
+- [x] T042 [US3] Implement get-by-id service method with `TRIP_REQUEST_NOT_FOUND` mapping in src/trip-requests/trip-requests.service.ts
+- [x] T043 [US3] Implement get-by-id controller action in src/trip-requests/trip-requests.controller.ts
+- [x] T044 [US3] Register `GET /trip-requests/:id` route in src/trip-requests/trip-requests.routes.ts
 
 **Checkpoint**: User Story 3 works independently after foundation and can be validated with any existing trip request.
 
@@ -132,15 +132,15 @@
 
 ### Tests for User Story 4
 
-- [ ] T045 [P] [US4] Add unit tests for cancel state transitions and already canceled behavior in tests/unit/trip-requests.service.test.ts
-- [ ] T046 [P] [US4] Add integration tests for `PATCH /trip-requests/{id}/cancel` success, not found, and already canceled in tests/integration/trip-requests.routes.test.ts
+- [x] T045 [P] [US4] Add unit tests for cancel state transitions and already canceled behavior in tests/unit/trip-requests.service.test.ts
+- [x] T046 [P] [US4] Add integration tests for `PATCH /trip-requests/{id}/cancel` success, not found, and already canceled in tests/integration/trip-requests.routes.test.ts
 
 ### Implementation for User Story 4
 
-- [ ] T047 [US4] Implement repository cancel update for pending trip requests in src/trip-requests/trip-requests.repository.ts
-- [ ] T048 [US4] Implement cancel service method with `TRIP_REQUEST_NOT_FOUND` and `TRIP_REQUEST_ALREADY_CANCELED` mapping in src/trip-requests/trip-requests.service.ts
-- [ ] T049 [US4] Implement cancel controller action in src/trip-requests/trip-requests.controller.ts
-- [ ] T050 [US4] Register `PATCH /trip-requests/:id/cancel` route in src/trip-requests/trip-requests.routes.ts
+- [x] T047 [US4] Implement repository cancel update for pending trip requests in src/trip-requests/trip-requests.repository.ts
+- [x] T048 [US4] Implement cancel service method with `TRIP_REQUEST_NOT_FOUND` and `TRIP_REQUEST_ALREADY_CANCELED` mapping in src/trip-requests/trip-requests.service.ts
+- [x] T049 [US4] Implement cancel controller action in src/trip-requests/trip-requests.controller.ts
+- [x] T050 [US4] Register `PATCH /trip-requests/:id/cancel` route in src/trip-requests/trip-requests.routes.ts
 
 **Checkpoint**: User Story 4 completes the minimum trip request lifecycle.
 
@@ -154,14 +154,14 @@
 
 ### Tests for User Story 5
 
-- [ ] T051 [P] [US5] Add integration tests for `GET /holidays/{year}` success and invalid year in tests/integration/holidays.routes.test.ts
-- [ ] T052 [P] [US5] Add integration tests for `GET /holidays/{year}` upstream failure mapping to `HOLIDAYS_API_UNAVAILABLE` in tests/integration/holidays.routes.test.ts
+- [x] T051 [P] [US5] Add integration tests for `GET /holidays/{year}` success and invalid year in tests/integration/holidays.routes.test.ts
+- [x] T052 [P] [US5] Add integration tests for `GET /holidays/{year}` upstream failure mapping to `HOLIDAYS_API_UNAVAILABLE` in tests/integration/holidays.routes.test.ts
 
 ### Implementation for User Story 5
 
-- [ ] T053 [US5] Implement holidays controller action for list-by-year in src/holidays/holidays.controller.ts
-- [ ] T054 [US5] Implement holidays routes with `GET /holidays/:year` in src/holidays/holidays.routes.ts
-- [ ] T055 [US5] Mount holidays routes in src/app.ts
+- [x] T053 [US5] Implement holidays controller action for list-by-year in src/holidays/holidays.controller.ts
+- [x] T054 [US5] Implement holidays routes with `GET /holidays/:year` in src/holidays/holidays.routes.ts
+- [x] T055 [US5] Mount holidays routes in src/app.ts
 
 **Checkpoint**: User Story 5 provides holiday transparency without preloading holiday data.
 
@@ -171,15 +171,15 @@
 
 **Purpose**: Finish delivery quality, documentation, verification, and assignment checklist items.
 
-- [ ] T056 [P] Update README with full team member names, package manager, chosen SGBD, setup, execution, tests, and endpoint examples in README.md
-- [ ] T057 [P] Add endpoint examples matching contracts/openapi.yaml in README.md
-- [ ] T058 [P] Verify `.env.example` values run locally without manual edits in .env.example
-- [ ] T059 [P] Verify `npm run init:db` is idempotent and does not seed holidays in src/db/init-db.ts
-- [ ] T060 Run full Vitest suite and fix any failures in tests/
-- [ ] T061 Run quickstart validation commands and update quickstart notes if needed in specs/001-trip-requests-api/quickstart.md
-- [ ] T062 Review all code identifiers, files, directories, comments, logs, tests, and error messages for English and naming convention compliance in src/ and tests/
-- [ ] T063 Verify all responses match the fixed success and error envelopes in src/middleware/response.ts and src/middleware/error-handler.ts
-- [ ] T064 Review Git history for multiple relevant English commits before public GitHub submission using .git/logs/HEAD
+- [x] T056 [P] Update README with full team member names, package manager, chosen SGBD, setup, execution, tests, and endpoint examples in README.md
+- [x] T057 [P] Add endpoint examples matching contracts/openapi.yaml in README.md
+- [x] T058 [P] Verify `.env.example` values run locally without manual edits in .env.example
+- [x] T059 [P] Verify `npm run init:db` is idempotent and does not seed holidays in src/db/init-db.ts
+- [x] T060 Run full Vitest suite and fix any failures in tests/
+- [x] T061 Run quickstart validation commands and update quickstart notes if needed in specs/001-trip-requests-api/quickstart.md
+- [x] T062 Review all code identifiers, files, directories, comments, logs, tests, and error messages for English and naming convention compliance in src/ and tests/
+- [x] T063 Verify all responses match the fixed success and error envelopes in src/middleware/response.ts and src/middleware/error-handler.ts
+- [x] T064 Review Git history for multiple relevant English commits before public GitHub submission using .git/logs/HEAD
 
 ---
 
