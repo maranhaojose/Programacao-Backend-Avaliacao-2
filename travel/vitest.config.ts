@@ -6,6 +6,7 @@ export default defineConfig({
     environment: "node",
     globals: true,
     include: ["tests/**/*.test.ts"],
+    setupFiles: ["tests/support/setup.ts"],
     passWithNoTests: true,
     restoreMocks: true,
   },

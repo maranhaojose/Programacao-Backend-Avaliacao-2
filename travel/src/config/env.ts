@@ -3,6 +3,7 @@ import { AppError } from '../errors/app-error.js';
 import { ErrorCodes } from '../errors/error-codes.js';
 
 dotenv.config();
+dotenv.config({ path: '.env.example' });
 
 type Env = {
   NODE_ENV: string;
